@@ -12,7 +12,7 @@ on:
       - SRE-*
       - features/*
     paths-ignore:
-      - .github/workflows/*
+      - '.github/workflows/*'
 
 jobs:
   deploy:
