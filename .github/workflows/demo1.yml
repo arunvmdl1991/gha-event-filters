@@ -5,12 +5,14 @@ on:
       - opened
       - closed
     branches:
-      - main
+      - main # we have to target branch 
   workflow_dispatch:
   push:
     branches:
       - SRE-*
       - features/*
+    paths-ignore:
+      - '.github/workflows/*'
 
 jobs:
   deploy:
@@ -27,4 +29,4 @@ jobs:
       - name: Build code
         run: npm run build
       - name: Deploy project
-        run: echo "Deploying..."
+        run: echo "Deploying...."
