@@ -1,5 +1,6 @@
 name: Events Demo 1
-on: 
+
+on:
   pull_request:
     types: 
       - opened
@@ -31,4 +32,4 @@ jobs:
       - name: Build code
         run: npm run build
       - name: Deploy project
-        run: echo "Deploying...."
+        run: echo "Deploying..."
