@@ -5,8 +5,7 @@ on:
       - opened
       - closed
     branches:
-      - SRE-*
-      - features/*
+      - main
   workflow_dispatch:
   push:
     branches:
