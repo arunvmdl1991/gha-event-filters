@@ -5,12 +5,14 @@ on:
       - opened
       - closed
     branches:
-      - main
+      - main # we have to target branch 
   workflow_dispatch:
   push:
     branches:
       - SRE-*
       - features/*
+    paths-ignore:
+      - .github/workflows/*
 
 jobs:
   deploy:
