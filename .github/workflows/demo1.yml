@@ -4,7 +4,15 @@ on:
     types: 
       - opened
       - closed
+    branches:
+      - SRE-*
+      - features/*
   workflow_dispatch:
+  push:
+    branches:
+      - SRE-*
+      - features/*
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
