@@ -45,3 +45,14 @@ jobs:
         run: echo "${{ toJSON(github.event) }}"
       - name: Deploy project
         run: echo "Deploying..."
+  download-artifacts:
+    needs:
+      deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files
+      - name: show downloaded artifacts
+        run: ls -ltr
