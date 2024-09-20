@@ -18,7 +18,9 @@ on:
     #   - '.github/workflows/*'
 
 jobs:
-  build-and-download:
+  build-and-upload:
+    outputs:
+      js_file: ${{ steps.publish.outputs.filename }}
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -29,6 +31,9 @@ jobs:
         run: npm run test
       - name: Build code
         run: npm run build
+      - name: Output the js filename
+        id: publish
+        run: find dist/assets/*.js - type f -execdir echo 'filename={}' >> $GITHUB_OUTPUT ';'
       - name: Upload code
         uses: actions/upload-artifact@v3
         with:
@@ -38,7 +43,7 @@ jobs:
             package.json
   deploy:
     needs:
-      build-and-download
+      build-and-upload
     runs-on: ubuntu-latest
     steps:
       - name: Output event data
@@ -47,9 +52,11 @@ jobs:
         run: echo "Deploying..."
   download-artifacts:
     needs:
-      build-and-download
+      build-and-upload
     runs-on: ubuntu-latest
     steps:
+      - name: output the js file name
+        run: echo "The filename of js is : ${{ jobs.build-and-upload.outputs.js_file }}"
       - name: show downloaded artifacts
         run: ls -ltr
       - name: Download artifact
