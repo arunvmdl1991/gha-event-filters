@@ -14,8 +14,8 @@ on:
     branches:
       - SRE-*
       - features/*
-    paths-ignore:
-      - '.github/workflows/*'
+    # paths-ignore:
+    #   - '.github/workflows/*'
 
 jobs:
   build-and-download:
