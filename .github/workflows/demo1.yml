@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: output the js file name
-        run: echo "The filename of js is : ${{ needs.build-and-upload.outputs.js_file }}"
+        run: echo "${{ needs.build-and-upload.outputs.js_file }}"
       - name: show downloaded artifacts
         run: ls -ltr
       - name: Download artifact
