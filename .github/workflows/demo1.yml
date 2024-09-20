@@ -47,9 +47,11 @@ jobs:
         run: echo "Deploying..."
   download-artifacts:
     needs:
-      deploy
+      build-and-download
     runs-on: ubuntu-latest
     steps:
+      - name: show downloaded artifacts
+        run: ls -ltr
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
