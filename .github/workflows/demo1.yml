@@ -6,7 +6,7 @@ on:
       - opened
       - closed
     branches:
-      - main # we have to target branch
+      - main # we have to give target branch
     paths-ignore:
       - '.github/workflows/*'
   workflow_dispatch:
